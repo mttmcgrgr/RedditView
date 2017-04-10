@@ -6,7 +6,6 @@ import { Router, Scene } from 'react-native-router-flux';
 
 
 const store = configureStore();
-
 window.store = store;
 
 
@@ -14,7 +13,7 @@ const RedditView = () => (
 
   <Provider store={store}>
     <Router>
-      <Scene key="loader" component={PostIndex} title="Loading" hideNavBar={true} initial />
+      <Scene key="home" component={PostIndex} title="Home" hideNavBar={true} initial />
     </Router>
   </Provider>
 );

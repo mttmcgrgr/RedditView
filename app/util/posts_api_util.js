@@ -1,9 +1,7 @@
 const baseUrl = "https://www.reddit.com/";
-const jsonPostfix = "/.json";
-
 
 export const fetchPosts = (tab) => (
-  fetch(baseUrl+ tab + jsonPostfix)
+  fetch(baseUrl + tab + "/.json")
   .then((response) => response.json())
       .then((responseJson) => {
         return responseJson.data.children;

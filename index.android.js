@@ -1,6 +1,6 @@
 
  import { AppRegistry } from 'react-native';
 
- import RedditViewer from './app/App';
+ import RedditView from './app/redditView';
 
- AppRegistry.registerComponent('RedditViewer', () => RedditViewer );
+ AppRegistry.registerComponent('RedditView', () => RedditView );
