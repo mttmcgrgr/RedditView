@@ -28,7 +28,6 @@ class PostIndex extends React.Component {
 
 
   render (){
-    debugger;
     let firstPost = this.props.posts[0];
 
     return(

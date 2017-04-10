@@ -1,7 +1,13 @@
 const baseUrl = "https://www.reddit.com/";
 
 export const fetchPosts = (tab) => (
-  fetch(baseUrl + tab + "/.json")
+  fetch(baseUrl + tab + '/.json', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
   .then((response) => response.json())
       .then((responseJson) => {
         return responseJson.data.children;
