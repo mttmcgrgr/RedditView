@@ -11,7 +11,9 @@ class PostIndex extends React.Component {
   }
 
 
-
+  fetchPosts () {
+    
+  }
 
   render (){
     return(
