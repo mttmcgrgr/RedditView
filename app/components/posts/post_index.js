@@ -27,16 +27,17 @@ class PostIndex extends React.Component {
 
 
   render (){
-    let firstPost = this.props.posts.hot[0].data ? this.props.posts.hot[0].data.title : "Hello";
-    
-    console.log(firstPost[0]);
+    let firstPost = this.props.posts.hot[0] ? this.props.posts.hot[0].data : "Loading";
+
+    console.log(firstPost);
     return(
       <View style={styles.backgroundColorText}>
         <TouchableHighlight>
           <Text style={styles.includeFontPaddingText}>
-            {firstPost}
+            {firstPost.title}
           </Text>
         </TouchableHighlight>
+        <Image source={firstPost.thumbnail} style={{top:100, width: 193, height: 110}}/>
 
       </View>
     );
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   },
   includeFontPaddingText: {
     top: 200,
-    fontSize: 120,
+    fontSize: 15,
     backgroundColor: '#EEEEEE',
     color: '#000000',
     textAlignVertical: 'center',
