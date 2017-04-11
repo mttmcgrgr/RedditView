@@ -28,8 +28,10 @@ class PostIndex extends React.Component {
 
   render (){
     let firstPost = this.props.posts.hot[0] ? this.props.posts.hot[0].data : "Loading";
-
-    console.log(firstPost);
+    let pic = {
+      uri: firstPost.thumbnail
+    };
+    console.log(firstPost.thumbnail);
     return(
       <View style={styles.backgroundColorText}>
         <TouchableHighlight>
@@ -37,7 +39,7 @@ class PostIndex extends React.Component {
             {firstPost.title}
           </Text>
         </TouchableHighlight>
-        <Image source={firstPost.thumbnail} style={{top:100, width: 193, height: 110}}/>
+        <Image source={pic} style={{top: 30, left: 30, width: 300, height: 300}}/>
 
       </View>
     );
