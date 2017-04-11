@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider, connect } from 'react-redux';
-import  PostIndex  from './components/posts/post_index';
+import  PostIndex  from './components/posts/post_index_container';
 import configureStore from './store';
 import { Router, Scene } from 'react-native-router-flux';
 

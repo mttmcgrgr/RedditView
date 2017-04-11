@@ -9,10 +9,10 @@ const defaultState = {
 };
 
 const postsReducer = (state = defaultState, action) => {
-  let newState = merge({}, state);
+    Object.freeze(state);
     switch(action.type){
        case RECEIVE_POSTS:
-         newState[action.tab] = action.posts;
+         const newState = merge({}, state, {[action.tab] : action.posts});
          return newState;
        default:
          return state;

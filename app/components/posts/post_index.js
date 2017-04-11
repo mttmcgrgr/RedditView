@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import requestPosts  from "../../actions/post_actions";
 import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
 
 
@@ -14,6 +12,9 @@ class PostIndex extends React.Component {
   }
 
 
+  componentWillMount(){
+    this.getPosts("hot");
+  }
 
 
   getPosts (tab) {
@@ -26,13 +27,14 @@ class PostIndex extends React.Component {
 
 
   render (){
-    let firstPost = this.props.posts[0];
-
+    let firstPost = this.props.posts.hot[0].data ? this.props.posts.hot[0].data.title : "Hello";
+    
+    console.log(firstPost[0]);
     return(
-      <View>
+      <View style={styles.backgroundColorText}>
         <TouchableHighlight>
-          <Text style={styles.bigblue}>
-            Title
+          <Text style={styles.includeFontPaddingText}>
+            {firstPost}
           </Text>
         </TouchableHighlight>
 
@@ -41,32 +43,24 @@ class PostIndex extends React.Component {
   }
 }
 
-
-
-const mapStateToProps = ({posts}) => ({
-  posts
-});
-
-const mapDispatchToProps = dispatch => ({
-  requestPosts: tab => dispatch(requestPosts(tab))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PostIndex);
-
-
+export default PostIndex;
 
 
 
 const styles = StyleSheet.create({
 
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-    backgroundColor: "#6A97C8"
+  backgroundColorText: {
+    top: 100,
+    left: 5,
+    backgroundColor: 'rgba(100, 100, 100, 0.3)'
+  },
+  includeFontPaddingText: {
+    top: 200,
+    fontSize: 120,
+    backgroundColor: '#EEEEEE',
+    color: '#000000',
+    textAlignVertical: 'center',
+    alignSelf: 'center',
   }
 });
 
