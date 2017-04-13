@@ -39,7 +39,7 @@ class PostIndex extends React.Component {
             {firstPost.title}
           </Text>
         </TouchableHighlight>
-        <Image source={pic} style={{top: 30, left: 30, width: 300, height: 300}}/>
+        <Image source={uri: firstPost.thumbnail}} style={{top: 30, left: 30, width: 300, height: 300}}/>
 
       </View>
     );
