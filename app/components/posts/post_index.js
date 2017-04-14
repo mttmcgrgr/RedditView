@@ -6,7 +6,7 @@ class PostIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      refreshing: false
+      refresh: false
     };
     this.getPosts = this.getPosts.bind(this);
   }
@@ -20,7 +20,7 @@ class PostIndex extends React.Component {
   getPosts (tab) {
     this.props.requestPosts(tab);
     this.setState({
-      refreshing: true
+      refresh: true
     });
   }
 
