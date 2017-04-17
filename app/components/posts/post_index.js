@@ -12,6 +12,10 @@ class PostIndex extends React.Component {
   }
 
 
+  componentDidMount(){
+    this.getPosts("hot");
+  }
+
   componentWillMount(){
     this.getPosts("hot");
   }
