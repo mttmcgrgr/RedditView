@@ -13,27 +13,37 @@ class PostDetail extends React.Component {
       <View style={styles.backgroundColorText}>
         <TouchableHighlight>
           <Text style={styles.includeFontPaddingText}>
-            {firstPost.title}
+            title
           </Text>
         </TouchableHighlight>
         <Text style={styles.includeFontPaddingText}>
-          {firstPost.subreddit}
+          subreddit
         </Text>
         <Text style={styles.includeFontPaddingText}>
-          {firstPost.author}
+          author
         </Text>
-        <Image source={pic} style={{top: 30, left: 30, width: 300, height: 300}}/>
 
       </View>
-
-    )
-
-
+    );
   }
 
-
-
-
 }
+
+const styles = StyleSheet.create({
+
+  backgroundColorText: {
+    top: 100,
+    left: 5,
+    backgroundColor: 'rgba(100, 100, 100, 0.3)'
+  },
+  includeFontPaddingText: {
+    top: 200,
+    fontSize: 15,
+    backgroundColor: '#EEEEEE',
+    color: '#000000',
+    textAlignVertical: 'center',
+    alignSelf: 'center',
+  }
+});
 
 export default PostDetail;
