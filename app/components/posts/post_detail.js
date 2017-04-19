@@ -9,6 +9,11 @@ class PostDetail extends React.Component {
 
   render (){
 
+    let firstPost = this.props.posts.hot[0] ? this.props.posts.hot[0].data : "Loading";
+    let pic = {
+      uri: firstPost.thumbnail
+    };
+
     return(
       <View style={styles.backgroundColorText}>
         <TouchableHighlight>
