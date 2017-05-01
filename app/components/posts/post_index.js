@@ -31,6 +31,7 @@ class PostIndex extends React.Component {
 
 
   render (){
+    console.log(this.props.posts);
     let firstPost = this.props.posts.hot[0] ? this.props.posts.hot[0].data : "Loading";
     let pic = {
       uri: firstPost.thumbnail
