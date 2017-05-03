@@ -49,7 +49,7 @@ class PostIndex extends React.Component {
         <Text style={styles.includeFontPaddingText}>
           {firstPost.author}
         </Text>
-        <Image source={pic} style={{top: 30, left: 30, width: 100, height: 100}}/>
+        <Image source={pic} style={{top: 3, left: 30, width: 100, height: 100}}/>
 
       </View>
     );
