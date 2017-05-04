@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
+import { ScrollView, View, Text, Image, ListView, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
 import PostIndexItem from './post_index';
 
 
@@ -7,7 +7,8 @@ class PostIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      refresh: false
+      refresh: false,
+      currentTab: "hot",
     };
     this.getPosts = this.getPosts.bind(this);
   }
@@ -28,13 +29,16 @@ class PostIndex extends React.Component {
 
 
   render (){
+    let posts = this.props.posts[this.state.currentTab];
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    let dataSource = ds.cloneWithRows(posts);
 
     let posts = this.props.posts ? this.props.posts : "Loading";
-
+    console.log(posts.hot);
     return(
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
+        renderRow={(post) => <PostIndexItem post={post}/>}
       />
     );
   }

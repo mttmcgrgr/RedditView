@@ -9,12 +9,13 @@ class PostIndexItem extends React.Component {
 
   render (){
 
-
+    console.log(this.props);
     return(
+
       <View style={styles.backgroundColorText}>
         <TouchableHighlight>
           <Text style={styles.includeFontPaddingText}>
-            title
+
           </Text>
         </TouchableHighlight>
         <Text style={styles.includeFontPaddingText}>
