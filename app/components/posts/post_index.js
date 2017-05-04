@@ -16,10 +16,6 @@ class PostIndex extends React.Component {
     this.getPosts("hot");
   }
 
-  componentWillMount(){
-    this.getPosts("hot");
-  }
-
 
   getPosts (tab) {
     this.props.requestPosts(tab);
@@ -38,18 +34,7 @@ class PostIndex extends React.Component {
     };
     return(
       <View style={styles.backgroundColorText}>
-        <TouchableHighlight>
-          <Text style={styles.includeFontPaddingText}>
-            {firstPost.title}
-          </Text>
-        </TouchableHighlight>
-        <Text style={styles.includeFontPaddingText}>
-          {firstPost.subreddit}
-        </Text>
-        <Text style={styles.includeFontPaddingText}>
-          {firstPost.author}
-        </Text>
-        <Image source={pic} style={{top: 3, left: 30, width: 100, height: 100}}/>
+        
 
       </View>
     );
