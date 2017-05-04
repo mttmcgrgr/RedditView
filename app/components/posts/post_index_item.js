@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
-import PostIndexItem from './post_index_item';
 
 
 class PostIndexItem extends React.Component {
@@ -13,12 +12,17 @@ class PostIndexItem extends React.Component {
 
     return(
       <View style={styles.backgroundColorText}>
-      <ul className="post_content_main">
-        {posts.map(post => (
-          <PostIndexItem post={post} receiveTrack={this.props.receiveTrack} key={post.id} />
-        ))}
-      </ul>
-
+        <TouchableHighlight>
+          <Text style={styles.includeFontPaddingText}>
+            title
+          </Text>
+        </TouchableHighlight>
+        <Text style={styles.includeFontPaddingText}>
+          subreddit
+        </Text>
+        <Text style={styles.includeFontPaddingText}>
+          author
+        </Text>
       </View>
     );
   }

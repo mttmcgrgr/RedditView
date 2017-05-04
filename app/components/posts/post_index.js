@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
+import PostIndexItem from './post_index';
 
 
 class PostIndex extends React.Component {
