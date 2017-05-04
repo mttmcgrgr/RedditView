@@ -27,16 +27,14 @@ class PostIndex extends React.Component {
 
 
   render (){
-    console.log(this.props.posts);
-    let firstPost = this.props.posts.hot[0] ? this.props.posts.hot[0].data : "Loading";
-    let pic = {
-      uri: firstPost.thumbnail
-    };
-    return(
-      <View style={styles.backgroundColorText}>
-        
 
-      </View>
+    let posts = this.props.posts ? this.props.posts : "Loading";
+
+    return(
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text>{rowData}</Text>}
+      />
     );
   }
 }
