@@ -15,14 +15,14 @@ class PostIndexItem extends React.Component {
       <View style={styles.backgroundColorText}>
         <TouchableHighlight>
           <Text style={styles.includeFontPaddingText}>
-
+            Title
           </Text>
         </TouchableHighlight>
         <Text style={styles.includeFontPaddingText}>
-          subreddit
+          Subreddit
         </Text>
         <Text style={styles.includeFontPaddingText}>
-          author
+          Author
         </Text>
       </View>
     );

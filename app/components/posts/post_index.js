@@ -11,34 +11,40 @@ class PostIndex extends React.Component {
       currentTab: "hot",
     };
     this.getPosts = this.getPosts.bind(this);
+    this.renderRow = this.renderRow.bind(this);
   }
 
 
-  componentDidMount(){
+  componentDidMount(tab){
     this.getPosts("hot");
   }
 
 
-  getPosts (tab) {
+  getPosts(tab) {
     this.props.requestPosts(tab);
     this.setState({
-      refresh: true
+      refresh: true,
+      currentTab: tab
     });
+  }
+
+  renderRow (post) {
+    return (
+      <PostIndexItem post={post}/>
+    );
   }
 
 
 
   render (){
-    let posts = this.props.posts[this.state.currentTab];
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    let posts = this.props.posts[this.state.currentTab];
     let dataSource = ds.cloneWithRows(posts);
 
-    let posts = this.props.posts ? this.props.posts : "Loading";
-    console.log(posts.hot);
     return(
       <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(post) => <PostIndexItem post={post}/>}
+        dataSource={dataSource}
+        renderRow={this.renderRow}
       />
     );
   }
