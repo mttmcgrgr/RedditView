@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, Image, ListView,
-   TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
+   TouchableOpacity, StyleSheet, TouchableHighlight, TabBarIOS  } from 'react-native';
 import PostIndexItem from './post_index_item';
 
 
@@ -45,12 +45,31 @@ class PostIndex extends React.Component {
     console.log(this.props.posts);
 
     return(
-      <View>
-        <Text>Reddit View</Text>
+      <View style={styles.backgroundColorText}>
+        <Text style={styles.mainTitle}>
+          Reddit View
+        </Text>
+        <Text></Text>
         <ListView
           dataSource={dataSource}
           renderRow={this.renderRow}
         />
+        <TabBarIOS
+          unselectedTintColor="yellow"
+          tintColor="white"
+          unselectedItemTintColor="red"
+          barTintColor="darkslateblue"
+        >
+          <TabBarIOS.Item
+            title="Blue Tab"
+            selected={this.state.currentTab === 'blueTab'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'blueTab',
+              });
+            }}>
+          </TabBarIOS.Item>
+        </TabBarIOS>
       </View>
     );
   }
@@ -63,9 +82,8 @@ export default PostIndex;
 const styles = StyleSheet.create({
 
   backgroundColorText: {
-    top: 100,
-    left: 5,
-    backgroundColor: 'rgba(100, 100, 100, 0.3)'
+
+    backgroundColor: '#F5FCFF'
   },
   includeFontPaddingText: {
     top: 200,
@@ -76,7 +94,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   mainTitle: {
-    fontSize: 15,
-    color: "#6A97C8"
+    fontSize: 20,
+    color: "#6A97C8",
+    fontWeight: 'bold',
+    top: 75
   }
 });

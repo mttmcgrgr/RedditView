@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   backgroundColorText: {
     top: 100,
     left: 5,
-    backgroundColor: 'rgba(100, 100, 100, 0.3)'
+    backgroundColor: 'rgba(100, 100, 100, 0.2)'
   },
   includeFontPaddingText: {
     top: 200,
