@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView, View, Text, Image, ListView, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
+import { ScrollView, View, Text, Image, ListView,
+   TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
 import PostIndexItem from './post_index_item';
 
 
@@ -15,15 +16,18 @@ class PostIndex extends React.Component {
   }
 
 
-  componentDidMount(tab){
+  componentDidMount(){
     this.getPosts("hot");
   }
 
 
   getPosts(tab) {
-    this.setState({refreshing: true});
-    this.props.requestPosts(tab);
-    this.setState({currentTab: tab});
+    this.setState({ refresh: true });
+    this.props.requestPosts(tab || this.state.currentTab).then(
+      (res) => {
+        this.setState({ refresh: false});
+      }
+    );
   }
 
   renderRow (post) {
@@ -39,19 +43,21 @@ class PostIndex extends React.Component {
     let posts = this.props.posts[this.state.currentTab];
     let dataSource = ds.cloneWithRows(posts);
     console.log(this.props.posts);
-    debugger
 
     return(
-      <ListView
-        dataSource={dataSource}
-        renderRow={this.renderRow}
-      />
+      <View>
+        <Text>Reddit View</Text>
+        <ListView
+          dataSource={dataSource}
+          renderRow={this.renderRow}
+        />
+      </View>
     );
   }
 }
 
-export default PostIndex;
 
+export default PostIndex;
 
 
 const styles = StyleSheet.create({
@@ -68,11 +74,9 @@ const styles = StyleSheet.create({
     color: '#000000',
     textAlignVertical: 'center',
     alignSelf: 'center',
+  },
+  mainTitle: {
+    fontSize: 15,
+    color: "#6A97C8"
   }
 });
-
-
-
-// componentDidMount(){
-//   this.props.requestPosts("hot");
-// }
