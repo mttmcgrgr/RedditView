@@ -13,7 +13,7 @@ const RedditView = () => (
 
   <Provider store={store}>
     <Router>
-      <Scene key="home" component={PostIndex} title="Home" hideNavBar={true} initial />
+      <Scene key="home" component={PostIndex} title="Reddit View" hideNavBar={true} initial />
     </Router>
   </Provider>
 );

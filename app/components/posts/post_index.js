@@ -25,7 +25,10 @@ class PostIndex extends React.Component {
     this.setState({ refresh: true });
     this.props.requestPosts(tab || this.state.currentTab).then(
       (res) => {
-        this.setState({ refresh: false});
+        this.setState({
+           refresh: false,
+           currentTab: tab
+         });
       }
     );
   }
@@ -37,39 +40,56 @@ class PostIndex extends React.Component {
   }
 
 
-
   render (){
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     let posts = this.props.posts[this.state.currentTab];
     let dataSource = ds.cloneWithRows(posts);
-    console.log(this.props.posts);
+
+    let threadView =
+    <ListView
+      dataSource={dataSource}
+      renderRow={this.renderRow}
+    />;
+
+    let tabBar =
+    <TabBarIOS
+      unselectedTintColor="yellow"
+      tintColor="white"
+      unselectedItemTintColor="red"
+      barTintColor="#6A97C8">
+      <TabBarIOS.Item
+          title="Hot"
+          selected={this.state.currentTab === 'hot'}
+          onPress={() => {
+            this.getPosts("hot");
+          }}>
+          {threadView}
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+            title="Top"
+            selected={this.state.currentTab === 'top'}
+            onPress={() => {
+              this.getPosts("top");
+            }}>
+            {threadView}
+          </TabBarIOS.Item>
+          <TabBarIOS.Item
+              title="New"
+              selected={this.state.currentTab === 'new'}
+              onPress={() => {
+                this.getPosts("new");
+              }}>
+              {threadView}
+            </TabBarIOS.Item>
+      </TabBarIOS>;
+
 
     return(
       <View style={styles.backgroundColorText}>
         <Text style={styles.mainTitle}>
           Reddit View
         </Text>
-        <Text></Text>
-        <ListView
-          dataSource={dataSource}
-          renderRow={this.renderRow}
-        />
-        <TabBarIOS
-          unselectedTintColor="yellow"
-          tintColor="white"
-          unselectedItemTintColor="red"
-          barTintColor="darkslateblue"
-        >
-          <TabBarIOS.Item
-            title="Blue Tab"
-            selected={this.state.currentTab === 'blueTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'blueTab',
-              });
-            }}>
-          </TabBarIOS.Item>
-        </TabBarIOS>
+        {tabBar}
       </View>
     );
   }
@@ -82,11 +102,11 @@ export default PostIndex;
 const styles = StyleSheet.create({
 
   backgroundColorText: {
-
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
+    flex: 1
   },
   includeFontPaddingText: {
-    top: 200,
+    top: 20,
     fontSize: 15,
     backgroundColor: '#EEEEEE',
     color: '#000000',
@@ -94,9 +114,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   mainTitle: {
-    fontSize: 20,
+    fontSize: 25,
     color: "#6A97C8",
     fontWeight: 'bold',
-    top: 75
+    top: 30
+  },
+
+  tabName: {
+    flex:0,
+    height:1,
+    width: 1
   }
+
 });

@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(100, 100, 100, 0.2)'
   },
   includeFontPaddingText: {
-    top: 200,
+    top: 20,
     fontSize: 15,
     backgroundColor: '#EEEEEE',
     color: '#000000',
