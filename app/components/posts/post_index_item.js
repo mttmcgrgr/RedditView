@@ -9,23 +9,25 @@ class PostIndexItem extends React.Component {
 
   render (){
     let post = this.props.post;
+    let imgStyle = post.data.thumbnail.length > 6 ? styles.thumbnail : null;
+
     return(
-      <View style={styles.backgroundColorText}>
-        <TouchableHighlight>
-          <Text style={styles.includeFontPaddingText}>
-            {post.data.title}
-          </Text>
-        </TouchableHighlight>
-        <Text style={styles.includeFontPaddingText}>
-          {post.data.subreddit}
+      <View style={styles.postLayout}>
+      <Text style={styles.subreddit}>
+        /r/{post.data.subreddit}
+      </Text>
+      <Text style={styles.author}>
+        {post.data.author}
+      </Text>
+      <TouchableHighlight>
+        <Text style={styles.postTitle}>
+          {post.data.title}
         </Text>
-        <Text style={styles.includeFontPaddingText}>
-          {post.data.author}
-        </Text>
-        <Image
-          style={{width: 50, height: 50}}
-          source={{uri: post.data.thumbnail}}
-        />
+      </TouchableHighlight>
+      <Image
+        style={imgStyle}
+        source={{uri: post.data.thumbnail}}
+      />
       </View>
     );
   }
@@ -34,19 +36,45 @@ class PostIndexItem extends React.Component {
 
 const styles = StyleSheet.create({
 
-  backgroundColorText: {
-    top: 100,
-    left: 5,
-    backgroundColor: 'rgba(100, 100, 100, 0.2)'
-  },
-  includeFontPaddingText: {
-    top: 20,
+  postTitle: {
+    justifyContent: 'flex-start',
     fontSize: 15,
+    fontWeight: 'bold',
+    paddingLeft: 5,
+    flexWrap: 'wrap',
+    top: 5,
+    alignSelf: `flex-start`
+  },
+  subreddit :{
+
+    fontSize: 10,
+    paddingBottom: 5,
+    paddingLeft: 5
+  },
+  author :{
+    justifyContent: 'flex-start',
+    fontSize: 10,
+    paddingLeft: 5
+  },
+  postLayout : {
+    
+    paddingBottom: 20,
     backgroundColor: '#EEEEEE',
-    color: '#000000',
-    textAlignVertical: 'center',
-    alignSelf: 'center',
+    flexDirection: 'column'
+  },
+  thumbnail: {
+    width: 90,
+    height: 90,
+    flexWrap: `wrap`,
+    alignSelf: `flex-end`,
+    marginRight: 10,
+  },
+  noThumbnail: {
+    width: 1,
+    height: 1
   }
+
+
 });
 
 export default PostIndexItem;

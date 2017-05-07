@@ -13,6 +13,7 @@ class PostIndex extends React.Component {
     };
     this.getPosts = this.getPosts.bind(this);
     this.renderRow = this.renderRow.bind(this);
+    this.renderSeparator = this.renderSeparator.bind(this);
   }
 
 
@@ -39,6 +40,12 @@ class PostIndex extends React.Component {
     );
   }
 
+  renderSeparator (sectionID, rowID) {
+    return (
+      <View key={`${sectionID}-${rowID}`} style={styles.separator}/>
+    );
+  }
+
 
   render (){
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -49,6 +56,8 @@ class PostIndex extends React.Component {
     <ListView
       dataSource={dataSource}
       renderRow={this.renderRow}
+      renderSeparator={this.renderSeparator}
+      style={styles.listView}
     />;
 
     let tabBar =
@@ -119,7 +128,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     top: 30
   },
-
+  separator: {
+    height: 1,
+    backgroundColor: 'white',
+  },
+  listView: {
+    top: 50
+  },
   tabName: {
     flex:0,
     height:1,
