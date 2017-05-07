@@ -37,13 +37,13 @@ class PostIndexItem extends React.Component {
 const styles = StyleSheet.create({
 
   postTitle: {
-    justifyContent: 'flex-start',
     fontSize: 15,
     fontWeight: 'bold',
     paddingLeft: 5,
     flexWrap: 'wrap',
     top: 5,
-    alignSelf: `flex-start`
+    alignSelf: `flex-start`,
+    width: 250
   },
   subreddit :{
 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5
   },
   postLayout : {
-    
+
     paddingBottom: 20,
     backgroundColor: '#EEEEEE',
     flexDirection: 'column'
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     flexWrap: `wrap`,
     alignSelf: `flex-end`,
     marginRight: 10,
+    position: `relative`
   },
   noThumbnail: {
     width: 1,
