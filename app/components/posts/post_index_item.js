@@ -9,7 +9,7 @@ class PostIndexItem extends React.Component {
 
   render (){
     let post = this.props.post;
-    let imgStyle = post.data.thumbnail.length > 6 ? styles.thumbnail : null;
+    let imgStyle = post.data.thumbnail.length > 10 ? styles.thumbnail : styles.noThumbnail;
 
     return(
       <View style={styles.postLayout}>
@@ -20,7 +20,7 @@ class PostIndexItem extends React.Component {
         {post.data.author}
       </Text>
       <TouchableHighlight>
-        <Text style={styles.postTitle}>
+        <Text style={styles.title}>
           {post.data.title}
         </Text>
       </TouchableHighlight>
@@ -36,25 +36,28 @@ class PostIndexItem extends React.Component {
 
 const styles = StyleSheet.create({
 
-  postTitle: {
+  title: {
     fontSize: 15,
     fontWeight: 'bold',
     paddingLeft: 5,
     flexWrap: 'wrap',
     top: 5,
     alignSelf: `flex-start`,
-    width: 250
+    width: 270,
+    position: `relative`,
+    flexDirection: `row`
   },
   subreddit :{
-
     fontSize: 10,
     paddingBottom: 5,
-    paddingLeft: 5
+    paddingLeft: 5,
+    color: `#4381B6`
   },
   author :{
     justifyContent: 'flex-start',
     fontSize: 10,
-    paddingLeft: 5
+    paddingLeft: 5,
+    color: `#4381B6`
   },
   postLayout : {
 
@@ -65,13 +68,12 @@ const styles = StyleSheet.create({
   thumbnail: {
     width: 90,
     height: 90,
-    flexWrap: `wrap`,
     alignSelf: `flex-end`,
     marginRight: 10,
-    position: `relative`
+    position: `relative`,
+
   },
   noThumbnail: {
-    width: 1,
     height: 1
   }
 

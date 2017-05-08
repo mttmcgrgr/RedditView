@@ -129,11 +129,12 @@ const styles = StyleSheet.create({
     top: 30
   },
   separator: {
-    height: 1,
+    height: 2,
     backgroundColor: 'white',
   },
   listView: {
-    top: 50
+    top: 50,
+    flexDirection: `column`
   },
   tabName: {
     flex:0,
