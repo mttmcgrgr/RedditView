@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
   thumbnail: {
     width: 90,
     height: 90,
+    flexWrap: `wrap`,
     alignSelf: `flex-end`,
     marginRight: 10,
     position: `relative`,
-
   },
   noThumbnail: {
     height: 1

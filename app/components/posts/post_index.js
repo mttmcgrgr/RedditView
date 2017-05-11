@@ -90,6 +90,14 @@ class PostIndex extends React.Component {
               }}>
               {threadView}
             </TabBarIOS.Item>
+            <TabBarIOS.Item
+                title="New"
+                selected={this.state.currentTab === 'rising'}
+                onPress={() => {
+                  this.getPosts("rising");
+                }}>
+                {threadView}
+              </TabBarIOS.Item>
       </TabBarIOS>;
 
 
@@ -129,7 +137,7 @@ const styles = StyleSheet.create({
     top: 30
   },
   separator: {
-    height: 2,
+    height: 1,
     backgroundColor: 'white',
   },
   listView: {

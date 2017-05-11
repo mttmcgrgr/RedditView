@@ -8,7 +8,6 @@ import { Router, Scene } from 'react-native-router-flux';
 const store = configureStore();
 window.store = store;
 
-
 const RedditView = () => (
 
   <Provider store={store}>
