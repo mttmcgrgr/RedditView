@@ -13,21 +13,23 @@ class PostIndexItem extends React.Component {
 
     return(
       <View style={styles.postLayout}>
-      <Text style={styles.subreddit}>
-        /r/{post.data.subreddit}
-      </Text>
-      <Text style={styles.author}>
-        {post.data.author}
-      </Text>
-      <TouchableHighlight>
-        <Text style={styles.title}>
-          {post.data.title}
+        <Image
+          style={imgStyle}
+          source={{uri: post.data.thumbnail}}
+        />
+      <View>
+        <Text style={styles.subreddit}>
+          /r/{post.data.subreddit}
         </Text>
-      </TouchableHighlight>
-      <Image
-        style={imgStyle}
-        source={{uri: post.data.thumbnail}}
-      />
+        <Text style={styles.author}>
+          {post.data.author}
+        </Text>
+        <TouchableHighlight>
+          <Text style={styles.title}>
+            {post.data.title}
+          </Text>
+        </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -40,38 +42,38 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     paddingLeft: 5,
-    flexWrap: 'wrap',
     top: 5,
-    alignSelf: `flex-start`,
     width: 270,
-    position: `relative`,
-    flexDirection: `row`
+    justifyContent: 'flex-start',
+    flexDirection: `column`
   },
   subreddit :{
     fontSize: 10,
     paddingBottom: 5,
     paddingLeft: 5,
-    color: `#4381B6`
+    color: `#4381B6`,
+    flexDirection: `column`
   },
   author :{
     justifyContent: 'flex-start',
     fontSize: 10,
     paddingLeft: 5,
-    color: `#4381B6`
+    color: `#4381B6`,
+    flexDirection: `column`
   },
-  postLayout : {
 
+  postLayout : {
     paddingBottom: 20,
     backgroundColor: '#EEEEEE',
-    flexDirection: 'column'
+    flexDirection: 'row'
   },
   thumbnail: {
     width: 90,
     height: 90,
-    flexWrap: `wrap`,
-    alignSelf: `flex-end`,
+    flexDirection: `column`,
     marginRight: 10,
-    position: `relative`,
+    alignSelf: `center`
+
   },
   noThumbnail: {
     height: 1

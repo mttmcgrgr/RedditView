@@ -62,8 +62,8 @@ class PostIndex extends React.Component {
 
     let tabBar =
     <TabBarIOS
-      unselectedTintColor="yellow"
-      tintColor="white"
+      unselectedTintColor="white"
+      tintColor="yellow"
       unselectedItemTintColor="red"
       barTintColor="#6A97C8">
       <TabBarIOS.Item
@@ -91,7 +91,7 @@ class PostIndex extends React.Component {
               {threadView}
             </TabBarIOS.Item>
             <TabBarIOS.Item
-                title="New"
+                title="Rising"
                 selected={this.state.currentTab === 'rising'}
                 onPress={() => {
                   this.getPosts("rising");
