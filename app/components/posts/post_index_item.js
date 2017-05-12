@@ -9,24 +9,29 @@ class PostIndexItem extends React.Component {
 
   render (){
     let post = this.props.post;
-    let imgStyle = post.data.thumbnail.length > 10 ? styles.thumbnail : styles.noThumbnail;
+    let image = post.data.thumbnail.length > 10 ? post.data.thumbnail : "https://cdn3.iconfinder.com/data/icons/cute-flat-social-media-icons-3/512/reddit.png";
 
     return(
-      <View style={styles.postLayout}>
+      <View style={styles.postIndexItem}>
         <Image
-          style={imgStyle}
-          source={{uri: post.data.thumbnail}}
+          style={styles.thumbnail}
+          source={{uri: image}}
         />
       <View>
         <Text style={styles.subreddit}>
-          /r/{post.data.subreddit}
+          {post.data.subreddit_name_prefixed}
         </Text>
         <Text style={styles.author}>
-          {post.data.author}
+          submitted by {post.data.author}
         </Text>
         <TouchableHighlight>
           <Text style={styles.title}>
             {post.data.title}
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight>
+          <Text style={styles.comments}>
+            {post.data.num_comments} comments
           </Text>
         </TouchableHighlight>
         </View>
@@ -37,14 +42,27 @@ class PostIndexItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+  postIndexItem : {
+    paddingBottom: 20,
+    backgroundColor: '#EEEEEE',
+    flexDirection: 'row'
+  },
+  thumbnail: {
+    width: 100,
+    height: 100,
+    flexDirection: `column`,
+    marginRight: 10,
+    alignSelf: `center`,
+    marginTop: 20,
+  },
   title: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: `bold`,
     paddingLeft: 5,
+    paddingBottom: 5,
     top: 5,
-    width: 270,
-    justifyContent: 'flex-start',
+    width: 200,
+    alignSelf: 'flex-start',
     flexDirection: `column`
   },
   subreddit :{
@@ -54,30 +72,23 @@ const styles = StyleSheet.create({
     color: `#4381B6`,
     flexDirection: `column`
   },
+  comments :{
+    fontSize: 10,
+    fontWeight: `bold`,
+    paddingBottom: 5,
+    paddingLeft: 5,
+    color: `#4381B6`,
+    flexDirection: `column`
+  },
   author :{
     justifyContent: 'flex-start',
+
     fontSize: 10,
     paddingLeft: 5,
     color: `#4381B6`,
     flexDirection: `column`
   },
 
-  postLayout : {
-    paddingBottom: 20,
-    backgroundColor: '#EEEEEE',
-    flexDirection: 'row'
-  },
-  thumbnail: {
-    width: 90,
-    height: 90,
-    flexDirection: `column`,
-    marginRight: 10,
-    alignSelf: `center`
-
-  },
-  noThumbnail: {
-    height: 1
-  }
 
 
 });
