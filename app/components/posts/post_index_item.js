@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     flexDirection: `column`,
+    marginLeft: 10,
     marginRight: 10,
     alignSelf: `center`,
     marginTop: 20,
