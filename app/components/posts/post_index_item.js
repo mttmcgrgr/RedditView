@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: `bold`,
     paddingLeft: 5,
-    paddingBottom: 5,
+    paddingBottom: 10,
     top: 5,
     width: 200,
     alignSelf: 'flex-start',
@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
   },
   author :{
     justifyContent: 'flex-start',
-
     fontSize: 10,
     paddingLeft: 5,
     color: `#4381B6`,
