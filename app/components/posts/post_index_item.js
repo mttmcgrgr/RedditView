@@ -7,6 +7,15 @@ class PostIndexItem extends React.Component {
     super(props);
   }
 
+
+  timeAgo(milliseconds){
+    let currentTime = Date.now() * 1000;
+
+
+
+
+  }
+
   render (){
     let post = this.props.post;
     let image = post.data.thumbnail.length > 10 ? post.data.thumbnail : "https://cdn3.iconfinder.com/data/icons/cute-flat-social-media-icons-3/512/reddit.png";
