@@ -8,22 +8,26 @@ class PostDetail extends React.Component {
   }
 
   render (){
+    let { post } = this.props;
 
     return(
       <View style={styles.backgroundColorText}>
-        <TouchableHighlight>
-          <Text style={styles.includeFontPaddingText}>
-            title
-          </Text>
-        </TouchableHighlight>
-        <Text style={styles.includeFontPaddingText}>
-          subreddit
-        </Text>
-        <Text style={styles.includeFontPaddingText}>
-          author
-        </Text>
 
+          <Text style={styles.subreddit}>
+            {post.data.subreddit_name_prefixed}
+          </Text>
+          <Text style={styles.author}>
+            submitted by {post.data.author}
+          </Text>
+          <Text style={styles.title}>
+            {post.data.title}
+          </Text>
+          <Text style={styles.comments}>
+            {post.data.num_comments} comments
+          </Text>
+  
       </View>
+
     );
   }
 
