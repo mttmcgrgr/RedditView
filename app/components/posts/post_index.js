@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, View, Text, Image, ListView,
    TouchableOpacity, StyleSheet, TouchableHighlight, TabBarIOS  } from 'react-native';
+import Tabs from 'react-native-tabs';
 import PostIndexItem from './post_index_item';
 
 
@@ -14,6 +15,7 @@ class PostIndex extends React.Component {
     this.getPosts = this.getPosts.bind(this);
     this.renderRow = this.renderRow.bind(this);
     this.renderSeparator = this.renderSeparator.bind(this);
+    this.listView = this.listView.bind(this);
   }
 
 
@@ -43,6 +45,33 @@ class PostIndex extends React.Component {
   renderSeparator (sectionID, rowID) {
     return (
       <View key={`${sectionID}-${rowID}`} style={styles.separator}/>
+    );
+  }
+
+  tabBar(){
+    return (
+        <Tabs selected={this.state.currentTab} style={{backgroundColor:'white'}}
+              selectedStyle={{color:'red'}} onSelect={el=>this.setState({currentTab:el.props.name})}>
+            <Text name="Hot">First</Text>
+            <Text name="Top" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Second</Text>
+            <Text name="New">Third</Text>
+            <Text name="Rising" selectedStyle={{color:'green'}}>Fourth</Text>
+            <Text name="fifth">Fifth</Text>
+        </Tabs>
+    );
+  }
+
+  listView(){
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    let posts = this.props.posts[this.state.currentTab];
+    let dataSource = ds.cloneWithRows(posts);
+    return (
+      <ListView
+        dataSource={dataSource}
+        renderRow={this.renderRow}
+        renderSeparator={this.renderSeparator}
+        style={styles.listView}
+      />
     );
   }
 
@@ -103,10 +132,15 @@ class PostIndex extends React.Component {
 
     return(
       <View style={styles.backgroundColorText}>
-        <Text style={styles.mainTitle}>
-          Reddit View
-        </Text>
-        {tabBar}
+          <Text style={styles.mainTitle}>
+            Reddit View
+          </Text>
+          <View>
+            {this.tabBar()}
+          </View>
+          <View>
+            {threadView}
+          </View>
       </View>
     );
   }
