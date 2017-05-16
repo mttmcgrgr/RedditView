@@ -15,7 +15,7 @@ class PostIndex extends React.Component {
     this.getPosts = this.getPosts.bind(this);
     this.renderRow = this.renderRow.bind(this);
     this.renderSeparator = this.renderSeparator.bind(this);
-    this.listView = this.listView.bind(this);
+    this.tabBar = this.tabBar.bind(this);
   }
 
 
@@ -51,12 +51,11 @@ class PostIndex extends React.Component {
   tabBar(){
     return (
         <Tabs selected={this.state.currentTab} style={{backgroundColor:'white'}}
-              selectedStyle={{color:'red'}} onSelect={el=>this.setState({currentTab:el.props.name})}>
-            <Text name="Hot">First</Text>
-            <Text name="Top" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Second</Text>
-            <Text name="New">Third</Text>
-            <Text name="Rising" selectedStyle={{color:'green'}}>Fourth</Text>
-            <Text name="fifth">Fifth</Text>
+              selectedStyle={{color:'red'}} onSelect={el=>this.getPosts(el.props.name)}>
+            <Text name="hot" selectedIconStyle={styles.tabStyle}>Hot</Text>
+            <Text name="top" selectedIconStyle={styles.tabStyle}>Top</Text>
+            <Text name="new" selectedIconStyle={styles.tabStyle}>New</Text>
+            <Text name="rising" selectedStyle={styles.tabStyle}>Rising</Text>
         </Tabs>
     );
   }
@@ -77,58 +76,6 @@ class PostIndex extends React.Component {
 
 
   render (){
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    let posts = this.props.posts[this.state.currentTab];
-    let dataSource = ds.cloneWithRows(posts);
-
-    let threadView =
-    <ListView
-      dataSource={dataSource}
-      renderRow={this.renderRow}
-      renderSeparator={this.renderSeparator}
-      style={styles.listView}
-    />;
-
-    let tabBar =
-    <TabBarIOS
-      unselectedTintColor="white"
-      tintColor="yellow"
-      unselectedItemTintColor="red"
-      barTintColor="#6A97C8">
-      <TabBarIOS.Item
-          title="Hot"
-          selected={this.state.currentTab === 'hot'}
-          onPress={() => {
-            this.getPosts("hot");
-          }}>
-          {threadView}
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
-            title="Top"
-            selected={this.state.currentTab === 'top'}
-            onPress={() => {
-              this.getPosts("top");
-            }}>
-            {threadView}
-          </TabBarIOS.Item>
-          <TabBarIOS.Item
-              title="New"
-              selected={this.state.currentTab === 'new'}
-              onPress={() => {
-                this.getPosts("new");
-              }}>
-              {threadView}
-            </TabBarIOS.Item>
-            <TabBarIOS.Item
-                title="Rising"
-                selected={this.state.currentTab === 'rising'}
-                onPress={() => {
-                  this.getPosts("rising");
-                }}>
-                {threadView}
-              </TabBarIOS.Item>
-      </TabBarIOS>;
-
 
     return(
       <View style={styles.backgroundColorText}>
@@ -136,10 +83,10 @@ class PostIndex extends React.Component {
             Reddit View
           </Text>
           <View>
-            {this.tabBar()}
+            {this.listView()}
           </View>
-          <View>
-            {threadView}
+          <View style={styles.tabBar}>
+            {this.tabBar()}
           </View>
       </View>
     );
@@ -178,10 +125,13 @@ const styles = StyleSheet.create({
     top: 50,
     flexDirection: `column`
   },
-  tabName: {
-    flex:0,
-    height:1,
-    width: 1
+  tabBar: {
+    bottom: 30,
+    flexDirection: `column`
+  },
+  tabStyle: {
+    borderTopWidth:2,
+    borderTopColor:'red'
   }
 
 });
