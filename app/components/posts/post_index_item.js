@@ -11,10 +11,9 @@ class PostIndexItem extends React.Component {
   timeAgo(milliseconds){
     let currentTime = Date.now() * 1000;
 
-
-
-
   }
+
+
 
   render (){
     let post = this.props.post;
