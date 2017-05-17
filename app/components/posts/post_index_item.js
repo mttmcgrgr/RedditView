@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, TouchablHighlight  } from 'react-native';
+import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, TouchableHighlight  } from 'react-native';
 
 
 class PostIndexItem extends React.Component {
@@ -32,16 +32,16 @@ class PostIndexItem extends React.Component {
         <Text style={styles.author}>
           submitted by {post.data.author}
         </Text>
-        <TouchableOpacity onPress={this._goToPost}>
+        <TouchableHighlight onPress={this._goToPost}>
           <Text style={styles.title}>
             {post.data.title}
           </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </TouchableHighlight>
+        <TouchableHighlight>
           <Text style={styles.comments}>
             {post.data.num_comments} comments
           </Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
         </View>
       </View>
     );
