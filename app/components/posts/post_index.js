@@ -36,6 +36,10 @@ class PostIndex extends React.Component {
     );
   }
 
+  componentWillMount(){
+    this.getPosts("hot");
+  }
+
   renderRow (post) {
     return (
       <PostIndexItem post={post}/>
