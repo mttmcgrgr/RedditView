@@ -32,16 +32,16 @@ class PostIndexItem extends React.Component {
         <Text style={styles.author}>
           submitted by {post.data.author}
         </Text>
-        <TouchableHighlight onPress={this._goToPost}>
+        <TouchableOpacity onPress={this._goToPost}>
           <Text style={styles.title}>
             {post.data.title}
           </Text>
-        </TouchableHighlight>
-        <TouchableHighlight>
+        </TouchableOpacity>
+        <TouchableOpacity>
           <Text style={styles.comments}>
             {post.data.num_comments} comments
           </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
         </View>
       </View>
     );

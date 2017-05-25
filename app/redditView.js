@@ -14,7 +14,7 @@ const RedditView = () => (
   <Provider store={store}>
     <Router>
       <Scene key="home" component={PostIndex} title="Home" hideNavBar={true} initial />
-      <Scene key="PostDetail" component={PostDetail} title="PostDetail" hideNavBar={true} />
+      <Scene key="PostDetail" component={PostDetail} title="PostDetail" hideNavBar={false} />
     </Router>
   </Provider>
 );
