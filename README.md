@@ -7,7 +7,7 @@ React Native mobile application (Android and iOS) for viewing Reddit
 
  - Follow the React Native setup instructions provided [here](https://facebook.github.io/react-native/docs/getting-started.html)
  - Clone this repo to your computer
- - CD into the RedditView folder and run npm install
+ - Navigate into the RedditView folder and run npm install in terminal
 
  - Android Studio Instructions:
       - Open Android Studio and add the RedditView folder by selecting "Open Existing Project"
