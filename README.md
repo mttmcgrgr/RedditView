@@ -3,7 +3,7 @@ React Native mobile application (Android and iOS) for viewing Reddit
 
 ![iOS](./docs/images/ios.jpg) ![Android](./docs/images/android.jpg)
 
-##Instructions For Running In Simulator:
+## Instructions For Running In Simulator:
 
  - Follow the React Native setup instructions provided [here](https://facebook.github.io/react-native/docs/getting-started.html)
  - Clone this repo to your computer
