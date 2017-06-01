@@ -13,7 +13,7 @@ React Native mobile application (Android and iOS) for viewing Reddit
       - Open Android Studio and add the RedditView folder by selecting "Open Existing Project"
       - Open AVD Manager and start a Virtual Device of your choice
       - From the project folder in terminal run react-native start
-      - Then Run react-native run-android
+      - Run react-native run-android
 
  - Xcode Instructions:
       - From the project folder in terminal run react-native run-ios
