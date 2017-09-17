@@ -1,5 +1,5 @@
 # RedditView
-React Native mobile application developed for iOS and Android simultaneously for viewing Reddit
+React Native application for viewing default subreddits. Developed for iOS and Android simultaneously.
            
 ![iOS](./docs/images/ios.jpg) ![Android](./docs/images/android.jpg)
 
